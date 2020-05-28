@@ -1,0 +1,34 @@
+modify openssl.cnf
+
+location: > openssl version -d
+
+First, modify the req parameters. Add an alternate_names section to openssl.cnf with the names you want to use. There are no existing alternate_names sections, so it does not matter where you add it.
+
+[ alternate_names ]
+
+DNS.1        = example.com
+DNS.2        = www.example.com
+DNS.3        = mail.example.com
+DNS.4        = ftp.example.com
+
+Next, add the following to the existing [ v3_ca ] section. Search for the exact string [ v3_ca ]:
+
+subjectAltName      = @alternate_names
+
+You might change keyUsage to the following under [ v3_ca ]:
+
+keyUsage = digitalSignature, keyEncipherment
+
+digitalSignature and keyEncipherment are standard faire for a server certificate. Don't worry about  nonRepudiation. Its a useless bit thought up by comp sci guys who wanted to be lawyers. It means nothing in the legal world.
+
+In the end, the IETF (RFC 5280), Browsers and CAs run fast and loose, so it probably does not matter what key usage you provide.
+
+Second, modify the signing parameters. Find this line under the CA_default section:
+
+# Extension copying option: use with caution.
+# copy_extensions = copy
+And change it to:
+
+# Extension copying option: use with caution.
+copy_extensions = copy
+This ensures the SANs are copied into the certificate. The other ways to copy the dns names are broken.
