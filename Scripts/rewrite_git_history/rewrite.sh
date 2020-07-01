@@ -13,8 +13,5 @@ then
     export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
 fi
 ' --tag-name-filter cat -- --branches --tags
-git log
 
-
-q
 git push --force --tags origin 'refs/heads/*'
