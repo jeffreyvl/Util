@@ -1,7 +1,18 @@
+#!/bin/sh
+
+REPO="repo.git"
+DIR="Dir"
+
+git clone --bare $REPO $DIR
+cd $DIR
+
 git filter-branch --env-filter '
+
 OLD_EMAIL="old@old.com"
+
 CORRECT_NAME="new"
 CORRECT_EMAIL="new@new.com"
+
 if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
 then
     export GIT_COMMITTER_NAME="$CORRECT_NAME"
