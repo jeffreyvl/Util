@@ -2,7 +2,11 @@ modify openssl.cnf
 
 location: > openssl version -d
 
-First, modify the req parameters. Add an alternate_names section to openssl.cnf with the names you want to use. There are no existing alternate_names sections, so it does not matter where you add it.
+First, modify the req parameters.
+Add an alternate_names section to openssl.cnf with the names you want to use. 
+There are no existing alternate_names sections, so it does not matter where you add it.
+
+Also include CN in the alternative_names
 
 [ alternate_names ]
 
