@@ -7,7 +7,8 @@ See web.config in this dir
 
 
 in code sample:
-
+ 
+```csharp
 try  
 {  
     Console.WriteLine("*** Call 'Hello' with generic client, with client behavior");  
@@ -31,4 +32,5 @@ try
 catch (Exception e)  
 {  
     DumpException(e);  
-}  
+}
+```
