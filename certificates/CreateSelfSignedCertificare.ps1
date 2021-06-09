@@ -35,13 +35,13 @@ $rootCert.FriendlyName = $friendlyName;
 
 # Create a new https binding in IIS for supplied domain
 
-# ForEach ($domain in $domains) 
-# {
-#     Write-Host $domain;
-#     $binding = (Get-WebBinding -Name $domain -HostHeader $domain | where-object { $_.protocol -eq 'https' });
-#
-#     if ($null -ne $binding) { Remove-WebBinding -Name $domain -Port 443 -Protocol https -HostHeader $domain };
-#   
-#     New-WebBinding -Name $domain -Port 443 -Protocol https -HostHeader $domain;
-#     (Get-WebBinding -Name $domain -Port 443 -Protocol https -HostHeader $domain).AddSslCertificate($cert.Thumbprint, 'my');
-# }
+ForEach ($domain in $domains) 
+{
+    Write-Host $domain;
+    $binding = (Get-WebBinding -Name $domain -HostHeader $domain | where-object { $_.protocol -eq 'https' });
+
+    if ($null -ne $binding) { Remove-WebBinding -Name $domain -Port 443 -Protocol https -HostHeader $domain };
+  
+    New-WebBinding -Name $domain -Port 443 -Protocol https -HostHeader $domain;
+    (Get-WebBinding -Name $domain -Port 443 -Protocol https -HostHeader $domain).AddSslCertificate($cert.Thumbprint, 'my');
+}

@@ -84,15 +84,15 @@ Export-Certificate -Cert $cert -FilePath c:\certs\user.p7b -Type p7b
 # -------------------------------------------------------
 
 # Purpose of Certificate 			Required Key Usage Bit
-CA Signing					keyCertSign
-						cRLSign
+CA Signing							keyCertSign
+									cRLSign
 										
-Certificate Signing				keyCertSign
+Certificate Signing					keyCertSign
 										
-SSL Client					digitalSignature
-SSL Server					keyEncipherment
+SSL Client							digitalSignature
+SSL Server							keyEncipherment
 	
-Object Signing					digitalSignature
+Object Signing						digitalSignature
 	
-S/MIME Signing					digitalSignature
-S/MimE Encryption				keyEncipherment
+S/MIME Signing						digitalSignature
+S/MimE Encryption					keyEncipherment
