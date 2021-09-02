@@ -1,0 +1,7 @@
+To authenticate with ssh key
+
+remote url should start with ssh://git@github.com
+
+next you can start and add key to ssh-agent with the command in ssh-bash.sh
+
+OR you can add a config file to .ssh folder see config file in this directory for an example
