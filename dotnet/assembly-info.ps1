@@ -1,0 +1,1 @@
+([system.reflection.assembly]::loadfile("C:\..\Full_Path\..\MyDLL.dll")).FullName
