@@ -1,7 +1,5 @@
 #-------------------------------------------------------------------------------------
 # Create Self signed root certificate
-# -dnsname -DnsName domain.example.com,anothersubdomain.example.com
-# -Subject "CN=Patti Fuller,OU=UserAccounts,DC=corp,DC=contoso,DC=com" 
 $cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
 -Subject "CN=P2SRootCert" `
 -KeyExportPolicy Exportable `
